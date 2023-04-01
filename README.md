@@ -1,5 +1,4 @@
 # 教程
-***
 在此，我们选择几种具有代表性的方法来简要介绍将机器学习应用于 VLSI 物理设计周期，为`CircuirNet`用户提供对功能和实用性的直观认识。有关整个示例，请参阅我们的 github 存储库[https://github.com/circuitnet/CircuitNet](https://github.com/circuitnet/CircuitNet)。
 
 请注意，所有三种选定的方法都利用类似图像的特征来训练生成模型，例如完全卷积网络 (FCN) 和 U-Net，将预测任务制定为图像到图像的转换任务。我们尽力重现了原始论文中的实验环境，包括模型架构、特征选择和损失。特征的名称与 CircuitNet 中的名称相匹配，以避免混淆。
@@ -9,8 +8,8 @@
 [1]的网络`Global Placement with Deep Learning-Enabled Explicit Routability Optimization`使用基于 FCN 的编码器-解码器架构将类图像特征转换为拥塞图。该架构如**图 1** 所示。
 <div align='center'><img src="https://circuitnet.github.io/pics/tutorial/congestion_model.png"></div>
 <center>**图1** 模型架构</center>
-生成网络由两个基本模块组成，编码器和解码器，它们是根据图 1 所示的架构设计的。
 
+生成网络由两个基本模块组成，编码器和解码器，它们是根据图 1 所示的架构设计的。
 ```py
 class conv(nn.Module):
     def __init__(self, dim_in, dim_out, kernel_size=3, stride=1, padding=1, bias=True):
