@@ -177,12 +177,12 @@ class GPDL(nn.Module):
 ```
 该模型通过200k iterations迭代训练模型。损失与训练迭代的曲线图如图 3 所示。归一化均方根误差 (NRMSE) 和结构相似性 (SSIM) 用于评估像素级精度，最终结果分别为 0.04 和 0.80。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/congestion_loss.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/congestion_loss.png" width = "250" ></div>
 <center><b>图 3</b> 不同训练迭代的损失曲线图</center>
 
 完成训练过程后，我们转储预测拥塞图的可视化，如图 4 所示。高对比度的部分表示拥塞热点。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/congestion_output.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/congestion_output.png" width = "250" ></div>
 <center><b>图 4</b> 拥塞预测图的可视化</center>
 
 ## 设计规则违反预测
@@ -275,7 +275,7 @@ class Decoder(nn.Module):
 
 在这个过程中，我们选取了九个特征输入到模型中，包括 (1)macro_region，(2)cell_density，(3)RUDY_long，(4)RUDY_short，(5)RUDY_pin_long，(6)congestion_eGR_horizo​​ntal_overflow，(7)congestion_eGR_vertical_overflow，(8)congestion_GR_horizo​​ntal_overflow，(9)congestion_GR_vertical_overflow。这些特征同样经过预处理并组合成一个 numpy 数组。该数组的可视化如图 6 所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/DRC_input.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/DRC_input.png" width = "250" ></div>
 <center><b>图 6</b> 输入numpy数组的可视化</center>
 
 我们创建一个名为`DRCDataset`的类，负责接收拥塞特征和标签的 numpy 数组，同时通过 pytorch `DataLoader`进行读取和处理。
@@ -355,17 +355,17 @@ class RouteNet(nn.Module):
 
 该模型通过200k iterations迭代训练模型。训练损失曲线图如图3所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/DRC_loss.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/DRC_loss.png" width = "250" ></div>
 <center><b>图 7</b> 不同训练迭代的损失曲线图</center>
 
 DRC违反图显示了每个分块中的DRC违反数，即布局中每个Gcell中的DRC违反数。DRC 违反图的可视化如图 8 所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/DRC_output.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/DRC_output.png" width = "250" ></div>
 <center><b>图 8</b> DRC违反图可视化</center>
 
 在这个过程中，违反次数超过阈值的分块称为热点，数量比非热点少得多，这种不平衡导致评估指标和接受者操作特征（ROC）曲线图的出现，用来评估该方法的性能。结果如图 9 所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/drc_roc_routenet.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/drc_roc_routenet.png" width = "250" ></div>
 <center><b>图9</b> ROC曲线</center>
 
 
@@ -471,7 +471,7 @@ class OutConv(nn.Module):
 
 在这个过程中，我们选取了五个特征输入到模型中，包括(1)power_i, (2)power_s, (3)power_sca, (4)power_all, (5)power_t. Again。这些特征同样经过预处理并组合在一起作为一个 numpy 数组。该数组的可视化如图11所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/IR_input.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/IR_input.png" width = "250" ></div>
 <center><b>图 11</b> 输入数组可视化</center>
 
 我们创建一个名为`IRDropDataset`的类，负责接收拥塞特征和标签的 numpy 数组，同时通过pytorch `DataLoader`进行读取和处理。
@@ -586,17 +586,17 @@ class MAVI(nn.Module):
 
 电压降图显示了每个分块中最大的电压降值，即布局中每个Gcell中的最大电压降值。电压降图可视化如图 12 所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/IR_output.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/IR_output.png" width = "250" ></div>
 <center><b>图 12</b> 电压降图可视化</center>
 
 该模型通过200k iterations迭代训练模型。训练损失曲线图如图13 所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/IR_loss.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/IR_loss.png" width = "250" ></div>
 <center><b>图 13</b> 不同训练迭代的损失曲线图</center>
 
 在这个过程中，电压降值超过阈值的分块称为热点，因此，我们采用与DRC违反预测任务相同的评估指标，即接收者操作特征（ROC）曲线，来评估该方法的性能。结果如图14所示。
 
-<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/irdrop_roc_mavi.png"width = "250" ></div>
+<div align='center'><img src="https://circuitnet.github.io/pics/tutorial/irdrop_roc_mavi.png" width = "250" ></div>
 <center><b>图 14</b> ROC曲线图</center>
 
 ## 引文
